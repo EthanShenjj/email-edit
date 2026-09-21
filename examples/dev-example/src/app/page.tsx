@@ -1,6 +1,10 @@
 "use client";
 
-import { EmailTemplateOptions, YooptaContentValue } from "@yoopta/editor";
+import {
+  EmailTemplateOptions,
+  YooptaContentValue,
+  YooptaEventChangePayload,
+} from "@yoopta/editor";
 import EmailBuilder, {
   createYooptaEmailEditor,
   YooptaEmailEditor,
@@ -115,7 +119,9 @@ const EmailBuilderExample = () => {
     () => createYooptaEmailEditor({ template: templateOptions }),
     []
   );
-  const [value, setValue] = useState<YooptaContentValue>(initValue);
+  const [value, setValue] = useState<YooptaContentValue>(
+    initValue as unknown as YooptaContentValue,
+  );
   const [isMailModalOpen, setIsMailModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [emailFields, setEmailFields] = useState<EmailFields>({
@@ -199,9 +205,8 @@ const EmailBuilderExample = () => {
   useEffect(() => {
     console.log("isprod", process.env.NODE_ENV === "production");
     if (process.env.NODE_ENV === "production") {
-      // in dev mode it's object, in prod it's array. WTF NextJS?
-      const handleChange = (payload) => {
-        onChange(payload?.[0]?.value);
+      const handleChange = (payload: YooptaEventChangePayload) => {
+        onChange(payload.value);
       };
 
       editor.on("change", handleChange);

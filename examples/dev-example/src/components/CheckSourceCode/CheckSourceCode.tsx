@@ -1,12 +1,11 @@
 import { ExternalLinkIcon, StarIcon, ArrowBigLeftDash } from 'lucide-react';
 
 type Props = {
-  example?: string;
   directLink?: string;
   withBackButton?: boolean;
 };
 
-const CheckSourceCode = ({ example, withBackButton = false, directLink }: Props) => {
+const CheckSourceCode = ({ withBackButton = false, directLink }: Props) => {
   return (
     <div
       className={`fixed px-2 md:top-2 md:right-0 right-[18px] top-[14.5px] flex z-50 justify-between w-${

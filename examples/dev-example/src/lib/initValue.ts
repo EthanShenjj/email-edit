@@ -1,5 +1,3 @@
-import { YooptaContentValue } from '@yoopta/editor';
-
 export const initValue = {
   '8b69c8bb-fe48-4ccb-a998-a9771453b771': {
     id: '8b69c8bb-fe48-4ccb-a998-a9771453b771',
@@ -363,4 +361,4 @@ export const initValue = {
       },
     ],
   },
-} satisfies YooptaContentValue;
+};
